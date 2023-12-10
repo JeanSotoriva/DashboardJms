@@ -6,7 +6,7 @@ import Ponto from '@/pages/Ponto.vue';
 
 const routes = [
     {
-        path: '/',
+        path: '/dashboard',
         component: () => import('@/layouts/DefaultTemplate'),
         children: [
             {
@@ -29,6 +29,11 @@ const routes = [
                 component: Dashboard,
                 name: 'dashboard',
             },
+        ],
+    },
+    {
+        path: '/',
+        children: [
             {
                 path: '/login',
                 component: Login,
@@ -39,7 +44,7 @@ const routes = [
                 redirect: '/login',
                 name: 'home',
             },
-        ],
+        ]
     }
 ]
 

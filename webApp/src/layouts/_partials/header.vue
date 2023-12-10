@@ -4,14 +4,14 @@
       <div class="container">
         <div class="logo">
           <router-link :to="{name: 'dashboard'}" class="navbar-brand ">
-            Bem vindo!
+            Olá {{ me.username }}!
           </router-link>
         </div>
         <div>
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
               <router-link :to="{name: 'home'}" v-if="me.username" class="nav-link">
-                Olá {{ me.username }} !(<span @click.prevent="logout">sair</span>)
+                 <span @click.prevent="logout">LOGOUT</span>
               </router-link>  
             </li>
           </ul>

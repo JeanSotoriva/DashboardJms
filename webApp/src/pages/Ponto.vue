@@ -1,6 +1,5 @@
 <template>
     <div class="row">
-        <SideBar />
         <div class="col-lg-12">
                 <div class="col-lg-4 col-md-4 col-6 mb-4 restaurant-cards">
                     <h3 class="my-4 title-tenant">Registro de Ponto</h3> 
@@ -39,7 +38,6 @@
     import { GoogleMap, Marker }  from 'vue3-google-map'
     import { URI_BASE_API } from '@/configs/axios'
     import axios from "axios";
-    import SideBar from '@/components/SideBar.vue'
     import { mapState, mapActions } from 'vuex'
 
     export default {
@@ -116,7 +114,6 @@
         components: {
             GoogleMap,
             Marker,
-            SideBar
         },
     }
 </script>

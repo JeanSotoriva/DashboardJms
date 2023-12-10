@@ -1,6 +1,5 @@
 <template>
     <div class="row">
-         <SideBar />
         <div class="col-lg-12">
             <div class="row my-4 j1">
                 <div>
@@ -19,11 +18,9 @@
     import '@/assets/css/auth.css'
     import 'bootstrap'
     import 'bootstrap/dist/css/bootstrap.min.css'
-    import SideBar from '@/components/SideBar.vue'
 
     export default {
         components: {
-            SideBar,
             ColaboradorComponent
         },
     }
