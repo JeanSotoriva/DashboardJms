@@ -45,48 +45,62 @@
 
 <script>
     import '@/assets/css/auth.css'
-    import { mapActions } from 'vuex'
+    import { mapActions , mapState} from 'vuex'
 
-export default {
+    export default {
 
-    data() {
-        return {
-            loading: false,
+        data() {
+            return {
+                loading: false,
 
-            formData: {
-                username: '',
-                password: '',
+                formData: {
+                    username: '',
+                    password: '',
+                },
+
+                errors: {
+                    username: '',
+                    password: '',
+                }
+            }
+        },
+        created() {
+            this.checkLoggedUser();
+        },
+
+        computed: {
+            ...mapState({
+                me: state => state.auth.me,
+            }),
+        },
+
+        methods: {
+            ...mapActions([
+                'login'
+            ]),
+
+            checkLoggedUser() {
+                if (this.me.username !== '') {
+                    this.$router.push({ name: 'dashboard' })
+                }
             },
 
-            errors: {
-                username: '',
-                password: '',
-            }
-        }
-    },
+            auth () {
+                this.resetErros()
+                this.loading = true
 
+                const params = {
+                    ...this.formData
+                }
 
-    methods: {
-        ...mapActions([
-            'login'
-        ]),
-
-        auth () {
-            this.resetErros()
-            this.loading = true
-
-            const params = {
-                ...this.formData
-            }
-
-            this.login(params)
+                this.login(params)
                 .then(response => {
                     this.$toast.open({
                         message: 'Autenticação realizada com sucesso',
                         type: 'success',
                         duration: '3000',
                     })
-                    this.$router.push({name: 'dashboard'})
+                    this.$router.push({ name: 'dashboard' })
                 })
                 .catch(error => {
                     const errorResponse = error.response
@@ -109,12 +123,12 @@ export default {
             },
 
             resetErros () {
-            this.errors = {
-                username: '',
-                password: '',
+                this.errors = {
+                    username: '',
+                    password: '',
+                }
             }
-        }
-    },
-}
+        },
+    }
 
 </script>

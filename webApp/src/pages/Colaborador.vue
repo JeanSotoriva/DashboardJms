@@ -15,16 +15,16 @@
 
 
 <script>
-import SideBar from '@/components/SideBar.vue'
-import ColaboradorComponent from '@/components/ColaboradorComponent.vue'
-import '@/assets/css/auth.css'
-import 'bootstrap'
-import 'bootstrap/dist/css/bootstrap.min.css'
+    import ColaboradorComponent from '@/components/ColaboradorComponent.vue'
+    import '@/assets/css/auth.css'
+    import 'bootstrap'
+    import 'bootstrap/dist/css/bootstrap.min.css'
+    import SideBar from '@/components/SideBar.vue'
 
-export default {
-    components: {
-        SideBar,
-        ColaboradorComponent
-    },
-}
+    export default {
+        components: {
+            SideBar,
+            ColaboradorComponent
+        },
+    }
 </script>

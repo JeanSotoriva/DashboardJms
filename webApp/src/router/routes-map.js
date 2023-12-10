@@ -27,7 +27,6 @@ const routes = [
             {
                 path: '/dashboard',
                 component: Dashboard,
-                redirect: '/dashboard/ponto',
                 name: 'dashboard',
             },
             {

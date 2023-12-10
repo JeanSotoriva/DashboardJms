@@ -41,55 +41,56 @@
 </template>
 
 <script>
-    import { mapActions, mapMutations, mapState } from 'vuex'
-    import Pagination from 'v-pagination-3';
-    import '@/assets/css/auth.css'
-    import 'bootstrap'
-    import 'bootstrap/dist/css/bootstrap.min.css'
+  import { mapActions, mapMutations, mapState } from 'vuex'
+  import Pagination from 'v-pagination-3';
+  import '@/assets/css/auth.css'
+  import 'bootstrap'
+  import 'bootstrap/dist/css/bootstrap.min.css'
 
-export default {
-  name: 'ColaboradorComponent',
+  export default {
+    
+    name: 'ColaboradorComponent',
 
-  data() {
-    return {
-      page: 1,
-      perPage: 10,
-    };
-  },
+    data() {
+      return {
+        page: 1,
+        perPage: 10,
+      };
+    },
 
-  created() {
-    if (this.me.username === '') {
-      return this.$router.push({name: 'home'})
-    }
-  },
+    created() {
+      if (this.me.username === '') {
+        return this.$router.push({name: 'home'})
+      }
+    },
 
-  mounted(){
-    this.getColaboradores()
-      .catch(_ => {
-        this.$toast.open({
-          message: 'falha ao carregar os colaboradores',
-          type: 'error',
-          duration: '3000',
-        })
-    })
-  },
+    mounted(){
+      this.getColaboradores()
+        .catch(_ => {
+          this.$toast.open({
+            message: 'falha ao carregar os colaboradores',
+            type: 'error',
+            duration: '3000',
+          })
+      })
+    },
 
-  computed: {
-    ...mapState({
-      colaboradores: state => state.colaboradores.colaboradores,
-      me: state => state.auth.me
-    }),
-  },
+    computed: {
+      ...mapState({
+        colaboradores: state => state.colaboradores.colaboradores,
+        me: state => state.auth.me
+      }),
+    },
 
-  methods: {
-      ...mapActions([
-        'getColaboradores'
-      ]),
-  },
+    methods: {
+        ...mapActions([
+          'getColaboradores'
+        ]),
+    },
 
-  components: {
-    Pagination,
-  },
+    components: {
+      Pagination,
+    },
   
 }
 </script>

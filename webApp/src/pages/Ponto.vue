@@ -43,6 +43,7 @@
     import { mapState, mapActions } from 'vuex'
 
     export default {
+
         data() {
             return {
                 center: { lat: 0, lng: 0 },
@@ -53,17 +54,23 @@
 
             }
         },
+
         mounted() {
-            this.getColaboradores()
-            .catch(_ => {
-                this.$toast.open({
-                message: 'falha ao carregar os colaboradores',
-                type: 'error',
-                duration: '3000',
-                })
-            }),
-            this.getCurrentLocation();
+            if (this.me.username !== '') {
+                this.getColaboradores()
+                .catch(_ => {
+                    this.$toast.open({
+                    message: 'falha ao carregar os colaboradores',
+                    type: 'error',
+                    duration: '3000',
+                    })
+                }),
+                this.getCurrentLocation();
+            }else {
+                this.$router.push({ name: 'login' });
+            }
         },
+
         computed: {
             markerOptions() {
                 return { position: this.center };
@@ -74,7 +81,7 @@
             }),
             colaboradorLogado() {
                 const result = this.colaboradores.data.find(colaborador => colaborador.usuario_id === this.me.id);
-                console.log(result);
+                // console.log(result);
                 if(result){
                     this.colaborator.nome = result.nome;
                     this.colaborator.matricula = result.matricula;
@@ -107,9 +114,9 @@
         },
 
         components: {
-        GoogleMap,
-        Marker,
-        SideBar
-    },
-}
+            GoogleMap,
+            Marker,
+            SideBar
+        },
+    }
 </script>

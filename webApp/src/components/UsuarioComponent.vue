@@ -55,7 +55,7 @@ export default {
 
   created() {
     if (this.me.username === '') {
-        return this.$router.push({name: 'home'})
+      return this.$router.push({name: 'home'})
     }
   },
 
